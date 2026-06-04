@@ -112,9 +112,9 @@ export default function SourcesInfluence() {
 
         <div style={{ marginBottom: 32 }}>
           <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 4 }}>Couchaere · Groupe {currentGroupe + 1}/{groupes.length}</div>
-          <h1 style={{ fontSize: 28, fontWeight: 700, color: "#1d1d1f", margin: "0 0 16px", letterSpacing: "-0.02em" }}>Sources de votre influence</h1>
+          <h1 style={{ fontSize: 32, fontWeight: 700, color: "#1d1d1f", margin: "0 0 16px", letterSpacing: "-0.02em" }}>Sources de votre influence</h1>
           <div style={{ height: 4, background: "#e5e5ea", borderRadius: 2, overflow: "hidden" }}>
-            <div style={{ height: "100%", width: `${progress}%`, background: "#ff6b00", borderRadius: 2, transition: "width 0.4s ease" }} />
+            <div style={{ height: "100%", width: `${progress}%`, background: "#ff6b00", borderRadius: 2, transition: "width 0.5s cubic-bezier(0.4,0,0.2,1)" }} />
           </div>
         </div>
 
@@ -158,7 +158,7 @@ export default function SourcesInfluence() {
                       background: val > 0 ? "#f5f5f7" : "#fafafa",
                       border: val > 0 ? "1.5px solid #e5e5ea" : "1.5px solid transparent",
                     }}>
-                      <div style={{ flex: 1, fontSize: 14, color: "#1d1d1f", lineHeight: 1.5 }}>{item.text}</div>
+                      <div style={{ flex: 1, fontSize: 16, color: "#1d1d1f", lineHeight: 1.6 }}>{item.text}</div>
                       <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
                         <button onClick={() => setVal(groupe.id, item.id, val - 1)} disabled={val <= 0} style={{
                           width: 28, height: 28, borderRadius: 14, border: "none",
@@ -186,7 +186,7 @@ export default function SourcesInfluence() {
               </div>
 
               <div style={{ marginTop: 16, height: 4, background: "#f5f5f7", borderRadius: 2 }}>
-                <div style={{ height: "100%", width: `${groupeTotal(groupe.id) * 10}%`, background: groupeTotal(groupe.id) === 10 ? "#34c759" : "#ff6b00", borderRadius: 2, transition: "width 0.3s" }} />
+                <div style={{ height: "100%", width: `${groupeTotal(groupe.id) * 10}%`, background: groupeTotal(groupe.id) === 10 ? "#34c759" : "#ff6b00", borderRadius: 2, transition: "width 0.4s cubic-bezier(0.4,0,0.2,1)" }} />
               </div>
             </div>
 
@@ -232,7 +232,7 @@ export default function SourcesInfluence() {
                       <span style={{ color: dim.color, fontWeight: 600 }}>{scores[key]}</span>
                     </div>
                     <div style={{ height: 6, background: "#f5f5f7", borderRadius: 3, overflow: "hidden" }}>
-                      <div style={{ height: "100%", width: `${(scores[key] / 100) * 100}%`, background: dim.color, borderRadius: 3, transition: "width 1s ease" }} />
+                      <div style={{ height: "100%", width: `${(scores[key] / 100) * 100}%`, background: dim.color, borderRadius: 3, transition: "width 1.2s cubic-bezier(0.4,0,0.2,1)" }} />
                     </div>
                   </div>
                 ))}
@@ -249,7 +249,7 @@ export default function SourcesInfluence() {
                   opacity: dominant.includes(key) ? 1 : 0.6,
                 }}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: dim.color, marginBottom: 6 }}>{dim.label}</div>
-                  <div style={{ fontSize: 12, color: "#6e6e73", lineHeight: 1.5, marginBottom: 10 }}>{dim.desc}</div>
+                  <div style={{ fontSize: 13, color: "#6e6e73", lineHeight: 1.6, marginBottom: 10 }}>{dim.desc}</div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                     {dim.keywords.map(kw => (
                       <span key={kw} style={{ padding: "2px 8px", borderRadius: 6, background: `${dim.color}15`, color: dim.color, fontSize: 10, fontWeight: 500 }}>{kw}</span>
