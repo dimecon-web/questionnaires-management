@@ -29,7 +29,7 @@ const choices = [
 
 const profiles = [
   {
-    min: 0, max: 4, label: "Théorie Y dominante", color: "#34c759",
+    min: 0, max: 3, label: "Théorie Y dominante", color: "#34c759",
     desc: "Votre vision du travail est fondée sur la confiance. Vous pensez que les gens cherchent naturellement à s'investir, à grandir et à prendre des responsabilités. Ce positionnement favorise l'autonomie et la délégation.",
     aise: [
       "Accompagner un collaborateur expérimenté sur un projet complexe qu'il maîtrise",
@@ -47,7 +47,7 @@ const profiles = [
     ],
   },
   {
-    min: 5, max: 7, label: "Tendance Y — avec nuances", color: "#30c97a",
+    min: 4, max: 6, label: "Tendance Y — avec nuances", color: "#30c97a",
     desc: "Votre posture de base est ancrée dans la confiance et l'autonomie, mais vous savez adapter votre style quand la situation le demande. Cette nuance est souvent un atout : vous pouvez cadrer sans perdre l'esprit de responsabilisation.",
     aise: [
       "Adapter son niveau de délégation selon la maturité réelle du collaborateur",
@@ -65,7 +65,7 @@ const profiles = [
     ],
   },
   {
-    min: 8, max: 10, label: "Profil mixte — équilibre relatif", color: "#ff9500",
+    min: 7, max: 8, label: "Profil mixte — équilibre relatif", color: "#ff9500",
     desc: "Vous naviguez de façon relativement équilibrée entre les deux postures. Ce pragmatisme peut être un atout réel, à condition que vos collaborateurs vous perçoivent comme cohérent plutôt qu'imprévisible.",
     aise: [
       "Adapter son style à des contextes et des profils très différents",
@@ -83,7 +83,7 @@ const profiles = [
     ],
   },
   {
-    min: 11, max: 12, label: "Tendance X — avec nuances", color: "#ff6b30",
+    min: 9, max: 11, label: "Tendance X — avec nuances", color: "#ff6b30",
     desc: "Votre réflexe est plutôt de cadrer, de contrôler et de diriger, mais vous intégrez une part de nuance dans votre pratique. Vous pouvez faire évoluer votre style si vous identifiez les situations où lâcher du contrôle serait plus efficace.",
     aise: [
       "Encadrer des profils peu expérimentés qui ont besoin de consignes précises",
@@ -101,7 +101,7 @@ const profiles = [
     ],
   },
   {
-    min: 13, max: 15, label: "Théorie X dominante", color: "#ff3b30",
+    min: 12, max: 15, label: "Théorie X dominante", color: "#ff3b30",
     desc: "Votre vision tend à considérer que les gens ont besoin d'être encadrés, guidés et motivés par des facteurs externes. Ce positionnement a sa légitimité dans certains contextes, mais appelle une réflexion sur les leviers de responsabilisation à long terme.",
     aise: [
       "Encadrer des équipes peu expérimentées qui ont besoin de consignes précises",
