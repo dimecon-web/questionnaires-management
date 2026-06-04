@@ -66,10 +66,82 @@ const groupes = [
 ];
 
 const dimensions = {
-  C1: { label: "Crédibilité", color: "#ff6b00", keywords: ["Connaissances", "Expertise", "Maîtrise", "Exactitude"], desc: "Votre influence repose sur la solidité de vos savoirs et de votre expertise reconnue." },
-  C2: { label: "Cohérence", color: "#0071e3", keywords: ["Rigueur", "Méthode", "Organisation", "Clarté"], desc: "Votre influence tient à la clarté et à la logique de vos messages." },
-  C3: { label: "Consistance", color: "#34c759", keywords: ["Engagement", "Implication", "Exemplarité", "Action"], desc: "Votre influence passe par l'exemple. Vous faites ce que vous dites." },
-  C4: { label: "Congruence", color: "#bf5af2", keywords: ["Empathie", "Écoute", "Authenticité", "Sincérité"], desc: "Votre influence repose sur la qualité de la relation et la sincérité." },
+  C1: {
+    label: "Crédibilité", color: "#ff6b00",
+    keywords: ["Connaissances", "Expertise", "Maîtrise", "Exactitude"],
+    desc: "Votre influence repose sur la solidité de vos savoirs et de votre expertise reconnue. Les autres vous font confiance parce que vous maîtrisez votre domaine et que vos connaissances sont fiables.",
+    aise: [
+      "Prendre la parole sur un sujet que vous maîtrisez en profondeur",
+      "Répondre à des questions techniques pointues avec précision",
+      "Convaincre par la démonstration et les faits",
+      "Être reconnu comme référent ou expert dans votre domaine",
+      "Intervenir en situation de diagnostic ou d'expertise métier",
+    ],
+    difficulte: [
+      "Influence sur des sujets hors de votre expertise directe",
+      "Situations où la relation prime sur la compétence technique",
+      "Convaincre un interlocuteur qui ne reconnaît pas votre expertise",
+      "Agir avec autorité dans un domaine nouveau ou incertain",
+      "Déléguer sans avoir le sentiment de perdre en qualité",
+    ],
+  },
+  C2: {
+    label: "Cohérence", color: "#0071e3",
+    keywords: ["Rigueur", "Méthode", "Organisation", "Clarté"],
+    desc: "Votre influence tient à la clarté et à la logique de vos messages. Vous structurez, vous ordonnez, vous rendez les choses lisibles — et c'est ce qui vous donne de l'autorité.",
+    aise: [
+      "Construire et présenter un argumentaire structuré et convaincant",
+      "Animer une réunion avec un ordre du jour clair et un déroulé maîtrisé",
+      "Rédiger des documents de référence, des procédures ou des synthèses",
+      "Clarifier une situation complexe en la mettant en ordre",
+      "Conduire des projets qui demandent rigueur et planification",
+    ],
+    difficulte: [
+      "Situations floues, ambiguës ou qui évoluent rapidement",
+      "Convaincre un interlocuteur émotionnel ou peu réceptif aux arguments logiques",
+      "S'adapter en temps réel quand le plan prévu ne tient plus",
+      "Créer du lien dans des contextes informels ou peu structurés",
+      "Accepter l'incertitude et avancer sans cadre préétabli",
+    ],
+  },
+  C3: {
+    label: "Consistance", color: "#34c759",
+    keywords: ["Engagement", "Implication", "Exemplarité", "Action"],
+    desc: "Votre influence passe par l'exemple. Vous faites ce que vous dites, vous tenez vos engagements, et c'est ce qui vous donne de l'autorité — bien plus que les mots.",
+    aise: [
+      "Entraîner une équipe par l'exemple dans un projet exigeant",
+      "Créer un climat de confiance fondé sur la fiabilité et la parole tenue",
+      "Incarner les valeurs d'une organisation par votre posture quotidienne",
+      "Mobiliser autour d'un engagement fort dans des situations difficiles",
+      "Être un référent moral ou comportemental pour votre équipe",
+    ],
+    difficulte: [
+      "Situations où les contraintes externes vous empêchent de tenir vos engagements",
+      "Contextes politiques où la parole n'est pas toujours suivie d'actes",
+      "Gérer des injonctions contradictoires entre ce que vous portez et ce qu'on vous demande de faire",
+      "Déléguer sans avoir le sentiment de perdre en exemplarité",
+      "Accepter que l'implication des autres soit différente de la vôtre",
+    ],
+  },
+  C4: {
+    label: "Congruence", color: "#bf5af2",
+    keywords: ["Empathie", "Écoute", "Authenticité", "Sincérité"],
+    desc: "Votre influence repose sur la qualité de la relation et la sincérité. Vous savez vous mettre à la place des autres, créer un climat de confiance, et c'est cela qui vous rend influent.",
+    aise: [
+      "Créer rapidement une relation de confiance avec un interlocuteur inconnu",
+      "Désamorcer une situation tendue ou un conflit interpersonnel",
+      "Accompagner un collaborateur en difficulté personnelle ou professionnelle",
+      "Animer des espaces de dialogue où chacun se sent écouté",
+      "Fédérer des parties prenantes aux intérêts divergents autour d'un projet commun",
+    ],
+    difficulte: [
+      "Maintenir une posture ferme face à quelqu'un avec qui vous avez un lien affectif",
+      "Prendre des décisions difficiles qui impactent des personnes que vous appréciez",
+      "Résister à la pression relationnelle pour maintenir une position",
+      "Travailler dans un environnement froid, très hiérarchisé ou peu bienveillant",
+      "Être perçu comme suffisamment directif quand la situation l'exige",
+    ],
+  },
 };
 
 export default function SourcesInfluence() {
@@ -291,18 +363,38 @@ export default function SourcesInfluence() {
                   const isWeak = weakest.includes(key);
                   return (
                     <div key={key} style={{
-                      padding: "18px 20px", borderRadius: 14,
-                      background: isDominant ? dim.color + "08" : "#fafafa",
+                      padding: "20px 22px", borderRadius: 14,
+                      background: isDominant ? dim.color + "06" : "#fafafa",
                       border: isDominant ? "2px solid " + dim.color : "1.5px solid #e5e5ea",
                     }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
                         <div style={{ width: 8, height: 8, borderRadius: 4, background: dim.color, flexShrink: 0 }} />
                         <div style={{ fontSize: 15, fontWeight: 600, color: "#1d1d1f" }}>{dim.label}</div>
                         {isDominant && <div style={{ fontSize: 11, fontWeight: 600, color: dim.color, background: dim.color + "18", padding: "2px 8px", borderRadius: 6 }}>Votre registre dominant</div>}
                         {isWeak && !isDominant && <div style={{ fontSize: 11, fontWeight: 500, color: "#aeaeb2", background: "#f5f5f7", padding: "2px 8px", borderRadius: 6 }}>À renforcer</div>}
                         <div style={{ fontSize: 12, color: "#aeaeb2", marginLeft: "auto" }}>{scores[key]} pts</div>
                       </div>
-                      <div style={{ fontSize: 14, color: isDominant ? "#1d1d1f" : "#6e6e73", lineHeight: 1.65, marginBottom: 10, opacity: isDominant ? 1 : 0.8 }}>{dim.desc}</div>
+                      <div style={{ fontSize: 14, color: "#6e6e73", lineHeight: 1.65, marginBottom: 14 }}>{dim.desc}</div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 12 }}>
+                        <div>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: "#34c759", letterSpacing: "0.06em", marginBottom: 8 }}>À L'AISE DANS…</div>
+                          {dim.aise.map((s, i) => (
+                            <div key={i} style={{ display: "flex", gap: 7, marginBottom: 6, alignItems: "flex-start" }}>
+                              <div style={{ width: 5, height: 5, borderRadius: 3, background: "#34c759", marginTop: 7, flexShrink: 0 }} />
+                              <span style={{ fontSize: 13, color: "#3a3a3c", lineHeight: 1.5 }}>{s}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: "#ff3b30", letterSpacing: "0.06em", marginBottom: 8 }}>EN DIFFICULTÉ QUAND…</div>
+                          {dim.difficulte.map((s, i) => (
+                            <div key={i} style={{ display: "flex", gap: 7, marginBottom: 6, alignItems: "flex-start" }}>
+                              <div style={{ width: 5, height: 5, borderRadius: 3, background: "#ff3b30", marginTop: 7, flexShrink: 0 }} />
+                              <span style={{ fontSize: 13, color: "#3a3a3c", lineHeight: 1.5 }}>{s}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
                         {dim.keywords.map(kw => (
                           <span key={kw} style={{ padding: "2px 8px", borderRadius: 6, background: dim.color + "12", color: dim.color, fontSize: 11, fontWeight: 500 }}>{kw}</span>
@@ -313,10 +405,6 @@ export default function SourcesInfluence() {
                 })}
               </div>
             </div>
-
-            <button onClick={() => { setSubmitted(false); setCurrentGroupe(0); setAllocations(Object.fromEntries(groupes.map(g => [g.id, Object.fromEntries(g.items.map(it => [it.id, 0]))]))); }} style={{
-              padding: "12px 24px", borderRadius: 20, border: "1.5px solid #e5e5ea",
-              background: "white", color: "#6e6e73", cursor: "pointer", fontSize: 14, fontWeight: 500,
             }}>Recommencer</button>
           </div>
         )}
@@ -324,3 +412,4 @@ export default function SourcesInfluence() {
     </div>
   );
 }
+
