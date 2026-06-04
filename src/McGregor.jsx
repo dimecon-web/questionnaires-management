@@ -29,7 +29,7 @@ const choices = [
 
 const profiles = [
   {
-    min: 0, max: 6, label: "Théorie Y dominante", color: "#34c759",
+    min: 0, max: 4, label: "Théorie Y dominante", color: "#34c759",
     desc: "Votre vision du travail est fondée sur la confiance. Vous pensez que les gens cherchent naturellement à s'investir, à grandir et à prendre des responsabilités. Ce positionnement favorise l'autonomie et la délégation.",
     aise: [
       "Accompagner un collaborateur expérimenté sur un projet complexe qu'il maîtrise",
@@ -47,26 +47,62 @@ const profiles = [
     ],
   },
   {
-    min: 7, max: 13, label: "Profil mixte", color: "#ff9500",
-    desc: "Vous naviguez entre confiance et contrôle selon les situations. Ce pragmatisme peut être un atout, à condition d'identifier clairement quand chaque posture est pertinente.",
+    min: 5, max: 7, label: "Tendance Y — avec nuances", color: "#30c97a",
+    desc: "Votre posture de base est ancrée dans la confiance et l'autonomie, mais vous savez adapter votre style quand la situation le demande. Cette nuance est souvent un atout : vous pouvez cadrer sans perdre l'esprit de responsabilisation.",
     aise: [
-      "Adapter son style à des collaborateurs de niveaux de maturité différents",
-      "Gérer une équipe hétérogène avec des besoins d'encadrement variés",
-      "Faire face à des contextes changeants qui demandent de la souplesse",
-      "Combiner autonomie et suivi selon les enjeux de chaque situation",
-      "Trouver un équilibre entre exigence et bienveillance",
+      "Adapter son niveau de délégation selon la maturité réelle du collaborateur",
+      "Allier bienveillance et exigence sans tomber dans l'excès de l'un ou l'autre",
+      "Animer des équipes hétérogènes avec des besoins d'encadrement variés",
+      "Garder le cap sur les résultats tout en préservant un climat de confiance",
+      "Introduire du cadre ponctuellement sans être perçu comme autoritaire",
     ],
     difficulte: [
-      "Être perçu comme imprévisible ou incohérent si le style change sans explications",
-      "Définir clairement sa posture managériale de référence",
-      "Éviter que la flexibilité devienne de l'hésitation ou du manque de cap",
-      "Défendre une position ferme face à une pression collective",
-      "Être lisible pour des collaborateurs qui ont besoin de repères stables",
+      "Maintenir une position ferme face à des collaborateurs très demandeurs de cadre",
+      "Être suffisamment directif dans des situations qui l'exigent clairement",
+      "Éviter de trop laisser faire par peur de briser la relation de confiance",
+      "Recadrer fermement sans minimiser ou enrober le message",
+      "Être lisible pour des profils qui ont besoin de consignes très claires",
     ],
   },
   {
-    min: 14, max: 30, label: "Théorie X dominante", color: "#ff3b30",
-    desc: "Votre vision tend à considérer que les gens ont besoin d'être encadrés, guidés et motivés par des facteurs externes. Ce positionnement appelle une réflexion sur les leviers de responsabilisation.",
+    min: 8, max: 10, label: "Profil mixte — équilibre relatif", color: "#ff9500",
+    desc: "Vous naviguez de façon relativement équilibrée entre les deux postures. Ce pragmatisme peut être un atout réel, à condition que vos collaborateurs vous perçoivent comme cohérent plutôt qu'imprévisible.",
+    aise: [
+      "Adapter son style à des contextes et des profils très différents",
+      "Trouver un compromis entre exigence et soutien selon la situation",
+      "Piloter une équipe hétérogène sans imposer une posture unique",
+      "Naviguer dans des environnements où les attentes changent souvent",
+      "Être à l'aise aussi bien dans la directive que dans la co-construction",
+    ],
+    difficulte: [
+      "Être lisible et prévisible pour des collaborateurs qui ont besoin de repères stables",
+      "Affirmer une posture managériale claire et assumée",
+      "Éviter que la flexibilité soit perçue comme de l'hésitation ou du manque de cap",
+      "Défendre une position ferme face à une pression collective",
+      "Savoir quand basculer d'un mode à l'autre sans que ça paraisse arbitraire",
+    ],
+  },
+  {
+    min: 11, max: 12, label: "Tendance X — avec nuances", color: "#ff6b30",
+    desc: "Votre réflexe est plutôt de cadrer, de contrôler et de diriger, mais vous intégrez une part de nuance dans votre pratique. Vous pouvez faire évoluer votre style si vous identifiez les situations où lâcher du contrôle serait plus efficace.",
+    aise: [
+      "Encadrer des profils peu expérimentés qui ont besoin de consignes précises",
+      "Garantir la fiabilité des livrables dans des contextes sous pression",
+      "Reprendre en main une situation qui dérive ou clarifier des rôles flous",
+      "Imposer un cadre dans des environnements peu structurés",
+      "Maintenir la rigueur dans des contextes à fort enjeu de conformité",
+    ],
+    difficulte: [
+      "Laisser de la place à l'initiative sans ressentir une perte de contrôle",
+      "Motiver des profils autonomes et créatifs qui ont besoin de liberté",
+      "Déléguer avec suffisamment de confiance pour que la délégation soit réelle",
+      "Créer un climat de confiance durable au-delà de la relation hiérarchique",
+      "Reconnaître que le contrôle systématique peut freiner l'engagement",
+    ],
+  },
+  {
+    min: 13, max: 15, label: "Théorie X dominante", color: "#ff3b30",
+    desc: "Votre vision tend à considérer que les gens ont besoin d'être encadrés, guidés et motivés par des facteurs externes. Ce positionnement a sa légitimité dans certains contextes, mais appelle une réflexion sur les leviers de responsabilisation à long terme.",
     aise: [
       "Encadrer des équipes peu expérimentées qui ont besoin de consignes précises",
       "Gérer des contextes à fort enjeu de conformité, de sécurité ou de réglementation",
