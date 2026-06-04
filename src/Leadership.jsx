@@ -288,6 +288,57 @@ export default function Leadership() {
               );
             })}
 
+            {/* Tous les profils */}
+            <div style={{ background: "white", borderRadius: 20, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
+              <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 16 }}>Les quatre styles de leadership</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {Object.entries(profils).map(([key, p]) => {
+                  const isDominant = dominant.includes(key);
+                  return (
+                    <div key={key} style={{
+                      padding: "18px 20px", borderRadius: 14,
+                      background: isDominant ? p.color + "08" : "#fafafa",
+                      border: isDominant ? "2px solid " + p.color : "1.5px solid #e5e5ea",
+                    }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                        <div style={{ width: 8, height: 8, borderRadius: 4, background: p.color, flexShrink: 0 }} />
+                        <div style={{ fontSize: 15, fontWeight: 600, color: "#1d1d1f" }}>{p.label}</div>
+                        <div style={{ fontSize: 12, color: "#6e6e73" }}>— {p.sub}</div>
+                        {isDominant && <div style={{ fontSize: 11, fontWeight: 600, color: p.color, background: p.color + "18", padding: "2px 8px", borderRadius: 6 }}>Votre profil</div>}
+                        <div style={{ fontSize: 12, color: "#aeaeb2", marginLeft: "auto" }}>{scores[key]} pts</div>
+                      </div>
+                      <div style={{ fontSize: 14, color: isDominant ? "#1d1d1f" : "#6e6e73", lineHeight: 1.65, marginBottom: 10, opacity: isDominant ? 1 : 0.8 }}>{p.desc}</div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
+                        <div>
+                          <div style={{ fontSize: 10, fontWeight: 600, color: "#34c759", marginBottom: 5, letterSpacing: "0.05em" }}>ATOUTS</div>
+                          {p.points.map((pt, i) => (
+                            <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4 }}>
+                              <div style={{ width: 4, height: 4, borderRadius: 2, background: "#34c759", marginTop: 6, flexShrink: 0 }} />
+                              <span style={{ fontSize: 12, color: "#6e6e73" }}>{pt}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 10, fontWeight: 600, color: "#ff3b30", marginBottom: 5, letterSpacing: "0.05em" }}>VIGILANCES</div>
+                          {p.vigilances.map((v, i) => (
+                            <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4 }}>
+                              <div style={{ width: 4, height: 4, borderRadius: 2, background: "#ff3b30", marginTop: 6, flexShrink: 0 }} />
+                              <span style={{ fontSize: 12, color: "#6e6e73" }}>{v}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                        {p.traits.map(t => (
+                          <span key={t} style={{ padding: "2px 8px", borderRadius: 6, background: p.color + "12", color: p.color, fontSize: 11, fontWeight: 500 }}>{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             <button onClick={() => { setSubmitted(false); setCurrent(0); setAllocations(Object.fromEntries(situations.map(s => [s.id, Object.fromEntries(s.items.map(it => [it.id, 0]))]))); }} style={{
               padding: "12px 24px", borderRadius: 20, border: "1.5px solid #e5e5ea",
               background: "white", color: "#6e6e73", cursor: "pointer", fontSize: 14, fontWeight: 500,
