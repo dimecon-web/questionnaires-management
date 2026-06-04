@@ -282,6 +282,38 @@ export default function SourcesInfluence() {
               })()}
             </div>
 
+            {/* Tous les registres */}
+            <div style={{ background: "white", borderRadius: 20, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
+              <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 16 }}>Les quatre registres d'influence</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {Object.entries(dimensions).map(([key, dim]) => {
+                  const isDominant = dominant.includes(key);
+                  const isWeak = weakest.includes(key);
+                  return (
+                    <div key={key} style={{
+                      padding: "18px 20px", borderRadius: 14,
+                      background: isDominant ? dim.color + "08" : "#fafafa",
+                      border: isDominant ? "2px solid " + dim.color : "1.5px solid #e5e5ea",
+                    }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                        <div style={{ width: 8, height: 8, borderRadius: 4, background: dim.color, flexShrink: 0 }} />
+                        <div style={{ fontSize: 15, fontWeight: 600, color: "#1d1d1f" }}>{dim.label}</div>
+                        {isDominant && <div style={{ fontSize: 11, fontWeight: 600, color: dim.color, background: dim.color + "18", padding: "2px 8px", borderRadius: 6 }}>Votre registre dominant</div>}
+                        {isWeak && !isDominant && <div style={{ fontSize: 11, fontWeight: 500, color: "#aeaeb2", background: "#f5f5f7", padding: "2px 8px", borderRadius: 6 }}>À renforcer</div>}
+                        <div style={{ fontSize: 12, color: "#aeaeb2", marginLeft: "auto" }}>{scores[key]} pts</div>
+                      </div>
+                      <div style={{ fontSize: 14, color: isDominant ? "#1d1d1f" : "#6e6e73", lineHeight: 1.65, marginBottom: 10, opacity: isDominant ? 1 : 0.8 }}>{dim.desc}</div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                        {dim.keywords.map(kw => (
+                          <span key={kw} style={{ padding: "2px 8px", borderRadius: 6, background: dim.color + "12", color: dim.color, fontSize: 11, fontWeight: 500 }}>{kw}</span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             <button onClick={() => { setSubmitted(false); setCurrentGroupe(0); setAllocations(Object.fromEntries(groupes.map(g => [g.id, Object.fromEntries(g.items.map(it => [it.id, 0]))]))); }} style={{
               padding: "12px 24px", borderRadius: 20, border: "1.5px solid #e5e5ea",
               background: "white", color: "#6e6e73", cursor: "pointer", fontSize: 14, fontWeight: 500,
