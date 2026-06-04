@@ -28,9 +28,60 @@ const choices = [
 ];
 
 const profiles = [
-  { min: 0, max: 6, label: "Théorie Y dominante", color: "#34c759", desc: "Votre vision du travail est fondée sur la confiance. Vous pensez que les gens cherchent naturellement à s'investir, à grandir et à prendre des responsabilités. Ce positionnement favorise l'autonomie et la délégation." },
-  { min: 7, max: 13, label: "Profil mixte", color: "#ff9500", desc: "Vous naviguez entre confiance et contrôle selon les situations. Ce pragmatisme peut être un atout, à condition d'identifier clairement quand chaque posture est pertinente." },
-  { min: 14, max: 30, label: "Théorie X dominante", color: "#ff3b30", desc: "Votre vision tend à considérer que les gens ont besoin d'être encadrés, guidés et motivés par des facteurs externes. Ce positionnement appelle une réflexion sur les leviers de responsabilisation." },
+  {
+    min: 0, max: 6, label: "Théorie Y dominante", color: "#34c759",
+    desc: "Votre vision du travail est fondée sur la confiance. Vous pensez que les gens cherchent naturellement à s'investir, à grandir et à prendre des responsabilités. Ce positionnement favorise l'autonomie et la délégation.",
+    aise: [
+      "Accompagner un collaborateur expérimenté sur un projet complexe qu'il maîtrise",
+      "Animer une équipe soudée, motivée, avec un haut niveau d'autonomie",
+      "Conduire un changement en co-construction avec les équipes",
+      "Mettre en place une organisation apprenante ou une culture de la responsabilisation",
+      "Gérer des profils experts ou créatifs qui ont besoin d'espace pour performer",
+    ],
+    difficulte: [
+      "Encadrer un collaborateur en difficulté qui a besoin de cadre et de directives claires",
+      "Faire face à une crise urgente qui exige des décisions rapides et non concertées",
+      "Manager dans un contexte très hiérarchisé ou très procédurier",
+      "Gérer des comportements opportunistes ou des personnes peu engagées",
+      "Maintenir l'exigence sans être perçu comme trop permissif",
+    ],
+  },
+  {
+    min: 7, max: 13, label: "Profil mixte", color: "#ff9500",
+    desc: "Vous naviguez entre confiance et contrôle selon les situations. Ce pragmatisme peut être un atout, à condition d'identifier clairement quand chaque posture est pertinente.",
+    aise: [
+      "Adapter son style à des collaborateurs de niveaux de maturité différents",
+      "Gérer une équipe hétérogène avec des besoins d'encadrement variés",
+      "Faire face à des contextes changeants qui demandent de la souplesse",
+      "Combiner autonomie et suivi selon les enjeux de chaque situation",
+      "Trouver un équilibre entre exigence et bienveillance",
+    ],
+    difficulte: [
+      "Être perçu comme imprévisible ou incohérent si le style change sans explications",
+      "Définir clairement sa posture managériale de référence",
+      "Éviter que la flexibilité devienne de l'hésitation ou du manque de cap",
+      "Défendre une position ferme face à une pression collective",
+      "Être lisible pour des collaborateurs qui ont besoin de repères stables",
+    ],
+  },
+  {
+    min: 14, max: 30, label: "Théorie X dominante", color: "#ff3b30",
+    desc: "Votre vision tend à considérer que les gens ont besoin d'être encadrés, guidés et motivés par des facteurs externes. Ce positionnement appelle une réflexion sur les leviers de responsabilisation.",
+    aise: [
+      "Encadrer des équipes peu expérimentées qui ont besoin de consignes précises",
+      "Gérer des contextes à fort enjeu de conformité, de sécurité ou de réglementation",
+      "Reprendre en main une équipe en dérive ou en situation de crise",
+      "Mettre en place des procédures claires dans un environnement désorganisé",
+      "Garantir la fiabilité des livrables dans un contexte sous pression",
+    ],
+    difficulte: [
+      "Retenir et engager des collaborateurs autonomes et créatifs",
+      "Créer un climat de confiance et favoriser l'initiative",
+      "Déléguer sans avoir le sentiment de perdre le contrôle",
+      "Accompagner des profils experts qui ont besoin de liberté pour performer",
+      "Susciter l'engagement sur la durée sans s'appuyer uniquement sur le contrôle",
+    ],
+  },
 ];
 
 function getProfile(scoreX) {
@@ -212,34 +263,50 @@ export default function McGregor() {
               </div>
             </div>
 
-            {/* Autres profils */}
+            {/* Tous les profils */}
             <div style={{ background: "white", borderRadius: 20, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
-              <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 16 }}>Les autres profils possibles</div>
+              <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 16 }}>Les trois profils possibles</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 {profiles.map(p => {
                   const isCurrent = p.label === profile?.label;
                   return (
                     <div key={p.label} style={{
-                      padding: "18px 20px", borderRadius: 14,
-                      background: isCurrent ? p.color + "08" : "#fafafa",
+                      padding: "20px 22px", borderRadius: 14,
+                      background: isCurrent ? p.color + "06" : "#fafafa",
                       border: isCurrent ? "2px solid " + p.color : "1.5px solid #e5e5ea",
                     }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
                         <div style={{ width: 8, height: 8, borderRadius: 4, background: p.color, flexShrink: 0 }} />
                         <div style={{ fontSize: 15, fontWeight: 600, color: "#1d1d1f" }}>{p.label}</div>
                         {isCurrent && <div style={{ fontSize: 11, fontWeight: 600, color: p.color, background: p.color + "18", padding: "2px 8px", borderRadius: 6 }}>Votre profil</div>}
                         <div style={{ fontSize: 12, color: "#aeaeb2", marginLeft: "auto" }}>Score X : {p.min}–{p.max}</div>
                       </div>
-                      <div style={{ fontSize: 14, color: isCurrent ? "#1d1d1f" : "#6e6e73", lineHeight: 1.65, opacity: isCurrent ? 1 : 0.8 }}>{p.desc}</div>
+                      <div style={{ fontSize: 14, color: "#6e6e73", lineHeight: 1.65, marginBottom: 16 }}>{p.desc}</div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                        <div>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: "#34c759", letterSpacing: "0.06em", marginBottom: 8 }}>À L'AISE DANS…</div>
+                          {p.aise.map((s, i) => (
+                            <div key={i} style={{ display: "flex", gap: 7, marginBottom: 6, alignItems: "flex-start" }}>
+                              <div style={{ width: 5, height: 5, borderRadius: 3, background: "#34c759", marginTop: 7, flexShrink: 0 }} />
+                              <span style={{ fontSize: 13, color: "#3a3a3c", lineHeight: 1.5 }}>{s}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: "#ff3b30", letterSpacing: "0.06em", marginBottom: 8 }}>EN DIFFICULTÉ QUAND…</div>
+                          {p.difficulte.map((s, i) => (
+                            <div key={i} style={{ display: "flex", gap: 7, marginBottom: 6, alignItems: "flex-start" }}>
+                              <div style={{ width: 5, height: 5, borderRadius: 3, background: "#ff3b30", marginTop: 7, flexShrink: 0 }} />
+                              <span style={{ fontSize: 13, color: "#3a3a3c", lineHeight: 1.5 }}>{s}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   );
                 })}
               </div>
             </div>
-
-            <button onClick={() => { setAnswers({}); setSubmitted(false); setCurrent(0); }} style={{
-              padding: "12px 24px", borderRadius: 20, border: "1.5px solid #e5e5ea",
-              background: "white", color: "#6e6e73", cursor: "pointer", fontSize: 14, fontWeight: 500,
             }}>Recommencer</button>
           </div>
         )}
@@ -247,3 +314,4 @@ export default function McGregor() {
     </div>
   );
 }
+
