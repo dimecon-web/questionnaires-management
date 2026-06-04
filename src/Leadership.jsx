@@ -107,7 +107,7 @@ export default function Leadership() {
   const goNext = () => {
     if (current < situations.length - 1) {
       setAnimating(true);
-      setTimeout(() => { setCurrent(c => c + 1); setAnimating(false); }, 240);
+      setTimeout(() => { setCurrent(c => c + 1); setAnimating(false); }, 320);
     }
   };
 
@@ -117,9 +117,9 @@ export default function Leadership() {
 
         <div style={{ marginBottom: 32 }}>
           <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 4 }}>Couchaere · Situation {current + 1}/{situations.length}</div>
-          <h1 style={{ fontSize: 28, fontWeight: 700, color: "#1d1d1f", margin: "0 0 16px", letterSpacing: "-0.02em" }}>Style de leadership</h1>
+          <h1 style={{ fontSize: 32, fontWeight: 700, color: "#1d1d1f", margin: "0 0 16px", letterSpacing: "-0.02em" }}>Style de leadership</h1>
           <div style={{ height: 4, background: "#e5e5ea", borderRadius: 2, overflow: "hidden" }}>
-            <div style={{ height: "100%", width: `${progress}%`, background: "#34c759", borderRadius: 2, transition: "width 0.4s ease" }} />
+            <div style={{ height: "100%", width: `${progress}%`, background: "#34c759", borderRadius: 2, transition: "width 0.5s cubic-bezier(0.4,0,0.2,1)" }} />
           </div>
         </div>
 
@@ -149,10 +149,10 @@ export default function Leadership() {
               background: "white", borderRadius: 20, padding: 24,
               boxShadow: "0 2px 12px rgba(0,0,0,0.07)", marginBottom: 20,
               opacity: animating ? 0 : 1, transform: animating ? "translateY(6px)" : "none",
-              transition: "opacity 0.22s, transform 0.22s",
+              transition: "opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1)",
             }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-                <p style={{ fontSize: 16, fontWeight: 600, color: "#1d1d1f", margin: 0 }}>{situation.text}</p>
+                <p style={{ fontSize: 18, fontWeight: 600, color: "#1d1d1f", margin: 0 }}>{situation.text}</p>
                 <div style={{ fontSize: 13, fontWeight: 600, color: sitTotal(situation.id) === 10 ? "#34c759" : "#ff9500", flexShrink: 0, marginLeft: 12 }}>
                   {sitTotal(situation.id)}/10
                 </div>
@@ -168,9 +168,9 @@ export default function Leadership() {
                       padding: "12px 14px", borderRadius: 14,
                       background: val > 0 ? `${p.color}08` : "#fafafa",
                       border: val > 0 ? `1.5px solid ${p.color}30` : "1.5px solid transparent",
-                      transition: "all 0.15s",
+                      transition: "all 0.25s cubic-bezier(0.4,0,0.2,1)",
                     }}>
-                      <div style={{ flex: 1, fontSize: 13, color: "#1d1d1f", lineHeight: 1.5 }}>{item.text}</div>
+                      <div style={{ flex: 1, fontSize: 15, color: "#1d1d1f", lineHeight: 1.6 }}>{item.text}</div>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
                         <button onClick={() => setVal(situation.id, item.id, val - 1)} disabled={val <= 0} style={{
                           width: 28, height: 28, borderRadius: 14, border: "none",
@@ -198,7 +198,7 @@ export default function Leadership() {
               </div>
 
               <div style={{ marginTop: 14, height: 4, background: "#f5f5f7", borderRadius: 2 }}>
-                <div style={{ height: "100%", width: `${sitTotal(situation.id) * 10}%`, background: sitTotal(situation.id) === 10 ? "#34c759" : "#ff9500", borderRadius: 2, transition: "width 0.3s" }} />
+                <div style={{ height: "100%", width: `${sitTotal(situation.id) * 10}%`, background: sitTotal(situation.id) === 10 ? "#34c759" : "#ff9500", borderRadius: 2, transition: "width 0.4s cubic-bezier(0.4,0,0.2,1)" }} />
               </div>
             </div>
 
@@ -244,7 +244,7 @@ export default function Leadership() {
                       <span style={{ color: p.color, fontWeight: 600 }}>{scores[key]}</span>
                     </div>
                     <div style={{ height: 6, background: "#f5f5f7", borderRadius: 3, overflow: "hidden" }}>
-                      <div style={{ height: "100%", width: `${(scores[key] / 100) * 100}%`, background: p.color, borderRadius: 3, transition: "width 1s ease" }} />
+                      <div style={{ height: "100%", width: `${(scores[key] / 100) * 100}%`, background: p.color, borderRadius: 3, transition: "width 1.2s cubic-bezier(0.4,0,0.2,1)" }} />
                     </div>
                   </div>
                 ))}
@@ -258,7 +258,7 @@ export default function Leadership() {
                 <div key={k} style={{ background: "white", borderRadius: 20, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.07)", borderTop: `4px solid ${p.color}` }}>
                   <div style={{ fontSize: 16, fontWeight: 700, color: "#1d1d1f", marginBottom: 4 }}>{p.label}</div>
                   <div style={{ fontSize: 12, color: "#6e6e73", marginBottom: 12 }}>{p.sub}</div>
-                  <p style={{ fontSize: 14, color: "#6e6e73", lineHeight: 1.6, marginBottom: 16 }}>{p.desc}</p>
+                  <p style={{ fontSize: 16, color: "#6e6e73", lineHeight: 1.7, marginBottom: 16 }}>{p.desc}</p>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
                     <div>
                       <div style={{ fontSize: 11, fontWeight: 600, color: "#34c759", marginBottom: 8, letterSpacing: "0.05em" }}>ATOUTS</div>
