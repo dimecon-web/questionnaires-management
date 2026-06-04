@@ -66,10 +66,90 @@ const situations = [
 ];
 
 const profils = {
-  A: { label: "Meneur", sub: "Centré sur ses propres convictions", color: "#ff3b30", traits: ["Décide rapidement", "Fort en convictions", "Assume les responsabilités"], desc: "Votre style repose sur la force de vos convictions. Vous prenez les rênes, décidez et assumez. Ce positionnement est un atout dans les crises, mais gagnera à s'ouvrir davantage à l'intelligence collective.", points: ["Clarté dans la décision", "Capacité à trancher", "Résistance à l'ambiguïté"], vigilances: ["Risque d'isolement décisionnel", "Peut brider l'initiative des équipes"] },
-  B: { label: "Organisateur", sub: "Centré sur les méthodes", color: "#0071e3", traits: ["Rigoureux", "Méthodique", "Cadrant"], desc: "Votre style repose sur la clarté des cadres et la maîtrise des méthodes. Vous sécurisez par les process. Ce profil assure la fiabilité, à condition de ne pas étouffer la créativité.", points: ["Fiabilité des livrables", "Lisibilité des rôles", "Contrôle des risques"], vigilances: ["Peut être perçu comme rigide", "Moins à l'aise dans l'incertitude"] },
-  C: { label: "Coopérateur", sub: "Centré sur les autres", color: "#34c759", traits: ["Fédérateur", "À l'écoute", "Bienveillant"], desc: "Votre style mise sur la qualité des relations et le bien-être de l'équipe. Vous créez du lien et apaisez les tensions. Ce registre favorise l'engagement, sous réserve de ne pas reporter les décisions difficiles.", points: ["Cohésion d'équipe", "Climat de confiance", "Capacité à fédérer"], vigilances: ["Peut éviter les confrontations nécessaires", "Risque de décisions trop consensuelles"] },
-  D: { label: "Compétiteur", sub: "Centré sur les résultats", color: "#ff9500", traits: ["Orienté résultats", "Délègue", "Stimulant"], desc: "Votre style est tourné vers la performance et le développement des compétences. Vous fixez le cap et challengez. Ce profil génère de l'autonomie, à condition d'accompagner les moins aguerris.", points: ["Orientation résultats", "Développement des talents", "Dynamisme"], vigilances: ["Peut négliger les dimensions relationnelles", "Exigence parfois mal calibrée"] },
+  A: {
+    label: "Meneur", sub: "Centré sur ses propres convictions", color: "#ff3b30",
+    traits: ["Décide rapidement", "Fort en convictions", "Assume les responsabilités"],
+    desc: "Votre style repose sur la force de vos convictions personnelles. Vous prenez les rênes, décidez et assumez. Ce positionnement est un atout dans les crises et les situations qui demandent du courage managérial, mais gagnera à s'ouvrir davantage à l'intelligence collective.",
+    points: ["Clarté dans la décision", "Capacité à trancher", "Résistance à l'ambiguïté"],
+    vigilances: ["Risque d'isolement décisionnel", "Peut brider l'initiative des équipes"],
+    aise: [
+      "Reprendre en main une équipe en dérive ou sans cap clair",
+      "Prendre une décision difficile dans l'urgence sans pouvoir consulter",
+      "Porter une position ferme face à une résistance ou un groupe hostile",
+      "Conduire un redressement ou une restructuration qui demande du courage",
+      "Cadrer des comportements problématiques de manière directe",
+    ],
+    difficulte: [
+      "Animer un collectif où la co-construction est attendue et valorisée",
+      "Accepter d'être remis en question ou d'avoir eu tort sans réaction défensive",
+      "Motiver des collaborateurs qui ont besoin d'autonomie et de sens",
+      "Gérer des profils experts qui attendent à être associés aux décisions",
+      "Maintenir l'engagement sur la durée sans recourir à l'autorité",
+    ],
+  },
+  B: {
+    label: "Organisateur", sub: "Centré sur les méthodes", color: "#0071e3",
+    traits: ["Rigoureux", "Méthodique", "Cadrant"],
+    desc: "Votre style repose sur la clarté des cadres et la maîtrise des méthodes. Vous sécurisez par les process et donnez à chacun une lisibilité sur ce qu'on attend de lui. Ce profil assure la fiabilité, à condition de ne pas étouffer la créativité et l'adaptation.",
+    points: ["Fiabilité des livrables", "Lisibilité des rôles", "Contrôle des risques"],
+    vigilances: ["Peut être perçu comme rigide", "Moins à l'aise dans l'incertitude"],
+    aise: [
+      "Structurer une nouvelle organisation ou clarifier des rôles flous",
+      "Piloter un projet complexe avec de nombreuses interdépendances",
+      "Garantir la conformité dans un environnement réglementé ou sensible",
+      "Onboarder un collaborateur en lui donnant un cadre clair dès le départ",
+      "Produire des livrables fiables dans des délais contraints",
+    ],
+    difficulte: [
+      "Manager dans un contexte très incertain où les règles changent souvent",
+      "Encourager la prise d'initiative et tolérer les erreurs comme apprentissage",
+      "S'adapter rapidement quand le plan prévu ne tient plus",
+      "Créer un climat chaleureux et informel avec son équipe",
+      "Laisser de la place à l'improvisation créative sans perdre le contrôle",
+    ],
+  },
+  C: {
+    label: "Coopérateur", sub: "Centré sur les autres", color: "#34c759",
+    traits: ["Fédérateur", "À l'écoute", "Bienveillant"],
+    desc: "Votre style mise sur la qualité des relations et le bien-être de l'équipe. Vous créez du lien, facilitez l'expression et apaisez les tensions. Ce registre favorise l'engagement sur la durée, sous réserve de ne pas reporter indéfiniment les décisions difficiles.",
+    points: ["Cohésion d'équipe", "Climat de confiance", "Capacité à fédérer"],
+    vigilances: ["Peut éviter les confrontations nécessaires", "Risque de décisions trop consensuelles"],
+    aise: [
+      "Intégrer un nouveau collaborateur et le faire se sentir rapidement à sa place",
+      "Reconstruire la cohésion après un conflit ou une période de tension",
+      "Animer un groupe aux profils et aux attentes très différents",
+      "Soutenir un collaborateur traversant une période personnelle difficile",
+      "Conduire un changement en associant les équipes à la réflexion",
+    ],
+    difficulte: [
+      "Recadrer fermement un comportement problématique sans le minimiser",
+      "Prendre une décision impopulaire et l'assumer sans chercher le consensus",
+      "Gérer un collaborateur qui exploite la bienveillance sans s'en rendre compte",
+      "Maintenir le cap sur les objectifs quand les relations absorbent toute l'énergie",
+      "Exprimer un désaccord direct sans atténuer au point de perdre le message",
+    ],
+  },
+  D: {
+    label: "Compétiteur", sub: "Centré sur les résultats", color: "#ff9500",
+    traits: ["Orienté résultats", "Délègue", "Stimulant"],
+    desc: "Votre style est tourné vers la performance et le développement des compétences. Vous fixez le cap, déléguez et challengez. Ce profil génère de l'autonomie et de la dynamique, à condition d'accompagner les profils moins aguerris avec davantage de soutien.",
+    points: ["Orientation résultats", "Développement des talents", "Dynamisme"],
+    vigilances: ["Peut négliger les dimensions relationnelles", "Exigence parfois mal calibrée"],
+    aise: [
+      "Piloter une équipe de hauts potentiels ou d'experts en quête de défi",
+      "Fixer des objectifs ambitieux et créer l'émulation autour de leur atteinte",
+      "Déléguer des missions complexes à des collaborateurs capables de les porter",
+      "Conduire une équipe dans un contexte compétitif ou sous forte pression",
+      "Développer les compétences par la mise en situation et l'exigence",
+    ],
+    difficulte: [
+      "Accompagner un collaborateur fragile ou en début de montée en compétence",
+      "Ralentir le rythme pour prendre soin du collectif et des individus",
+      "Gérer les situations où la performance est bloquée par des facteurs humains",
+      "Maintenir la motivation d'une équipe qui ne partage pas la même ambition",
+      "Accepter qu'un bon résultat obtenu sans qualité de relation soit insuffisant",
+    ],
+  },
 };
 
 export default function Leadership() {
@@ -296,34 +376,34 @@ export default function Leadership() {
                   const isDominant = dominant.includes(key);
                   return (
                     <div key={key} style={{
-                      padding: "18px 20px", borderRadius: 14,
-                      background: isDominant ? p.color + "08" : "#fafafa",
+                      padding: "20px 22px", borderRadius: 14,
+                      background: isDominant ? p.color + "06" : "#fafafa",
                       border: isDominant ? "2px solid " + p.color : "1.5px solid #e5e5ea",
                     }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, flexWrap: "wrap" }}>
                         <div style={{ width: 8, height: 8, borderRadius: 4, background: p.color, flexShrink: 0 }} />
                         <div style={{ fontSize: 15, fontWeight: 600, color: "#1d1d1f" }}>{p.label}</div>
                         <div style={{ fontSize: 12, color: "#6e6e73" }}>— {p.sub}</div>
                         {isDominant && <div style={{ fontSize: 11, fontWeight: 600, color: p.color, background: p.color + "18", padding: "2px 8px", borderRadius: 6 }}>Votre profil</div>}
                         <div style={{ fontSize: 12, color: "#aeaeb2", marginLeft: "auto" }}>{scores[key]} pts</div>
                       </div>
-                      <div style={{ fontSize: 14, color: isDominant ? "#1d1d1f" : "#6e6e73", lineHeight: 1.65, marginBottom: 10, opacity: isDominant ? 1 : 0.8 }}>{p.desc}</div>
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
+                      <div style={{ fontSize: 14, color: "#6e6e73", lineHeight: 1.65, marginBottom: 16 }}>{p.desc}</div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 12 }}>
                         <div>
-                          <div style={{ fontSize: 10, fontWeight: 600, color: "#34c759", marginBottom: 5, letterSpacing: "0.05em" }}>ATOUTS</div>
-                          {p.points.map((pt, i) => (
-                            <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4 }}>
-                              <div style={{ width: 4, height: 4, borderRadius: 2, background: "#34c759", marginTop: 6, flexShrink: 0 }} />
-                              <span style={{ fontSize: 12, color: "#6e6e73" }}>{pt}</span>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: "#34c759", letterSpacing: "0.06em", marginBottom: 8 }}>À L'AISE DANS…</div>
+                          {p.aise.map((s, i) => (
+                            <div key={i} style={{ display: "flex", gap: 7, marginBottom: 6, alignItems: "flex-start" }}>
+                              <div style={{ width: 5, height: 5, borderRadius: 3, background: "#34c759", marginTop: 7, flexShrink: 0 }} />
+                              <span style={{ fontSize: 13, color: "#3a3a3c", lineHeight: 1.5 }}>{s}</span>
                             </div>
                           ))}
                         </div>
                         <div>
-                          <div style={{ fontSize: 10, fontWeight: 600, color: "#ff3b30", marginBottom: 5, letterSpacing: "0.05em" }}>VIGILANCES</div>
-                          {p.vigilances.map((v, i) => (
-                            <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4 }}>
-                              <div style={{ width: 4, height: 4, borderRadius: 2, background: "#ff3b30", marginTop: 6, flexShrink: 0 }} />
-                              <span style={{ fontSize: 12, color: "#6e6e73" }}>{v}</span>
+                          <div style={{ fontSize: 11, fontWeight: 600, color: "#ff3b30", letterSpacing: "0.06em", marginBottom: 8 }}>EN DIFFICULTÉ QUAND…</div>
+                          {p.difficulte.map((s, i) => (
+                            <div key={i} style={{ display: "flex", gap: 7, marginBottom: 6, alignItems: "flex-start" }}>
+                              <div style={{ width: 5, height: 5, borderRadius: 3, background: "#ff3b30", marginTop: 7, flexShrink: 0 }} />
+                              <span style={{ fontSize: 13, color: "#3a3a3c", lineHeight: 1.5 }}>{s}</span>
                             </div>
                           ))}
                         </div>
@@ -338,10 +418,6 @@ export default function Leadership() {
                 })}
               </div>
             </div>
-
-            <button onClick={() => { setSubmitted(false); setCurrent(0); setAllocations(Object.fromEntries(situations.map(s => [s.id, Object.fromEntries(s.items.map(it => [it.id, 0]))]))); }} style={{
-              padding: "12px 24px", borderRadius: 20, border: "1.5px solid #e5e5ea",
-              background: "white", color: "#6e6e73", cursor: "pointer", fontSize: 14, fontWeight: 500,
             }}>Recommencer</button>
           </div>
         )}
@@ -349,3 +425,4 @@ export default function Leadership() {
     </div>
   );
 }
+
