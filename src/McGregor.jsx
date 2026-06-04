@@ -212,6 +212,31 @@ export default function McGregor() {
               </div>
             </div>
 
+            {/* Autres profils */}
+            <div style={{ background: "white", borderRadius: 20, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
+              <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 16 }}>Les autres profils possibles</div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {profiles.map(p => {
+                  const isCurrent = p.label === profile?.label;
+                  return (
+                    <div key={p.label} style={{
+                      padding: "18px 20px", borderRadius: 14,
+                      background: isCurrent ? p.color + "08" : "#fafafa",
+                      border: isCurrent ? "2px solid " + p.color : "1.5px solid #e5e5ea",
+                    }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                        <div style={{ width: 8, height: 8, borderRadius: 4, background: p.color, flexShrink: 0 }} />
+                        <div style={{ fontSize: 15, fontWeight: 600, color: "#1d1d1f" }}>{p.label}</div>
+                        {isCurrent && <div style={{ fontSize: 11, fontWeight: 600, color: p.color, background: p.color + "18", padding: "2px 8px", borderRadius: 6 }}>Votre profil</div>}
+                        <div style={{ fontSize: 12, color: "#aeaeb2", marginLeft: "auto" }}>Score X : {p.min}–{p.max}</div>
+                      </div>
+                      <div style={{ fontSize: 14, color: isCurrent ? "#1d1d1f" : "#6e6e73", lineHeight: 1.65, opacity: isCurrent ? 1 : 0.8 }}>{p.desc}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             <button onClick={() => { setAnswers({}); setSubmitted(false); setCurrent(0); }} style={{
               padding: "12px 24px", borderRadius: 20, border: "1.5px solid #e5e5ea",
               background: "white", color: "#6e6e73", cursor: "pointer", fontSize: 14, fontWeight: 500,
