@@ -51,7 +51,7 @@ function BarChart({ scoreX, scoreY }) {
             <span style={{ color: item.color, fontWeight: 600 }}>{item.score} / 15</span>
           </div>
           <div style={{ height: 8, background: "#f5f5f7", borderRadius: 4, overflow: "hidden" }}>
-            <div style={{ height: "100%", width: `${(item.score / 15) * 100}%`, background: item.color, borderRadius: 4, transition: "width 1s ease" }} />
+            <div style={{ height: "100%", width: `${(item.score / 15) * 100}%`, background: item.color, borderRadius: 4, transition: "width 1.2s cubic-bezier(0.4,0,0.2,1)" }} />
           </div>
         </div>
       ))}
@@ -72,7 +72,7 @@ export default function McGregor() {
     setAnswers(prev => ({ ...prev, [qid]: value }));
     if (current < total - 1) {
       setAnimating(true);
-      setTimeout(() => { setCurrent(c => c + 1); setAnimating(false); }, 260);
+      setTimeout(() => { setCurrent(c => c + 1); setAnimating(false); }, 320);
     }
   };
 
@@ -100,9 +100,9 @@ export default function McGregor() {
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
           <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 4 }}>McGregor · {answered}/{total}</div>
-          <h1 style={{ fontSize: 28, fontWeight: 700, color: "#1d1d1f", margin: "0 0 16px", letterSpacing: "-0.02em" }}>Théories X & Y</h1>
+          <h1 style={{ fontSize: 32, fontWeight: 700, color: "#1d1d1f", margin: "0 0 16px", letterSpacing: "-0.02em" }}>Théories X & Y</h1>
           <div style={{ height: 4, background: "#e5e5ea", borderRadius: 2, overflow: "hidden" }}>
-            <div style={{ height: "100%", width: `${progress}%`, background: "#0071e3", borderRadius: 2, transition: "width 0.4s ease" }} />
+            <div style={{ height: "100%", width: `${progress}%`, background: "#0071e3", borderRadius: 2, transition: "width 0.5s cubic-bezier(0.4,0,0.2,1)" }} />
           </div>
         </div>
 
@@ -116,7 +116,7 @@ export default function McGregor() {
                   border: "none", cursor: "pointer", fontSize: 11, fontWeight: 600,
                   background: i === current ? "#0071e3" : answers[q.id] !== undefined ? "#34c75920" : "#e5e5ea",
                   color: i === current ? "white" : answers[q.id] !== undefined ? "#34c759" : "#6e6e73",
-                  transition: "all 0.15s",
+                  transition: "all 0.2s cubic-bezier(0.4,0,0.2,1)",
                 }}>{i + 1}</button>
               ))}
             </div>
@@ -126,10 +126,10 @@ export default function McGregor() {
               background: "white", borderRadius: 20, padding: 28,
               boxShadow: "0 2px 12px rgba(0,0,0,0.07)", marginBottom: 20,
               opacity: animating ? 0 : 1, transform: animating ? "translateY(6px)" : "none",
-              transition: "opacity 0.22s, transform 0.22s",
+              transition: "opacity 0.35s cubic-bezier(0.4,0,0.2,1), transform 0.35s cubic-bezier(0.4,0,0.2,1)",
             }}>
               <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 12 }}>Affirmation {current + 1} sur {total}</div>
-              <p style={{ fontSize: 17, color: "#1d1d1f", lineHeight: 1.6, margin: "0 0 24px", fontWeight: 400 }}>
+              <p style={{ fontSize: 19, color: "#1d1d1f", lineHeight: 1.65, margin: "0 0 28px", fontWeight: 400 }}>
                 {questions[current].text}
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
@@ -142,10 +142,10 @@ export default function McGregor() {
                       background: selected ? "#0071e315" : "white",
                       cursor: "pointer",
                       display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
-                      transition: "all 0.15s",
+                      transition: "all 0.2s cubic-bezier(0.4,0,0.2,1)",
                     }}>
-                      <span style={{ fontSize: 17, fontWeight: 700, color: selected ? "#0071e3" : "#1d1d1f" }}>{c.label}</span>
-                      <span style={{ fontSize: 10, color: selected ? "#0071e3" : "#6e6e73", fontWeight: 500 }}>{c.full}</span>
+                      <span style={{ fontSize: 19, fontWeight: 700, color: selected ? "#0071e3" : "#1d1d1f" }}>{c.label}</span>
+                      <span style={{ fontSize: 11, color: selected ? "#0071e3" : "#6e6e73", fontWeight: 500 }}>{c.full}</span>
                     </button>
                   );
                 })}
@@ -182,7 +182,7 @@ export default function McGregor() {
             <div style={{ background: "white", borderRadius: 20, padding: 28, boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
               <div style={{ fontSize: 12, color: "#6e6e73", fontWeight: 500, marginBottom: 8 }}>Résultat</div>
               <h2 style={{ fontSize: 26, fontWeight: 700, color: profile?.color, margin: "0 0 12px", letterSpacing: "-0.01em" }}>{profile?.label}</h2>
-              <p style={{ fontSize: 15, color: "#6e6e73", lineHeight: 1.6, margin: 0 }}>{profile?.desc}</p>
+              <p style={{ fontSize: 16, color: "#6e6e73", lineHeight: 1.7, margin: 0 }}>{profile?.desc}</p>
             </div>
 
             {/* Scores */}
